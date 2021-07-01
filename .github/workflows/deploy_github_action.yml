@@ -16,7 +16,7 @@ jobs:
           export ID=`docker ps | awk '{print $1}' | sed -n '2p'`
           export IP=`docker inspect ${ID} |grep IPAddress | sed -n '2p'| grep -o '[0-9]\{1,3\}\.[0-9]\{1,3\}\.[0-9]\{1,3\}\.[0-9]\{1,3\}'`
           sudo apt-get install socat
-          socat TCP4-LISTEN:30080,reuseaddr,fork TCP4:${IP}:30080 &          
+          socat TCP4-LISTEN:30080,reuseaddr,fork TCP4:${IP}:30080 &       
       - uses: shaowenchen/debugger-action@v2
         name: debugger
         timeout-minutes: 60
